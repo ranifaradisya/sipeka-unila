@@ -1,7 +1,9 @@
 export default function SpkLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <style>{`
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         html, body, body.font-poppins, #__next,
         [data-nextjs-scroll-focus-boundary] {
           background-color: #F0F4F9 !important;
@@ -43,7 +45,9 @@ export default function SpkLayout({ children }: { children: React.ReactNode }) {
           border-width: revert !important;
           box-shadow: revert !important;
         }
-      `}</style>
+      `,
+        }}
+      />
       {children}
     </>
   );
