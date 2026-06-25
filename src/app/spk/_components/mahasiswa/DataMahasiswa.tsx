@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import styles from "../../page.module.css";
 import type { Mhs } from "../data";
 
-const SEMESTER_OPTIONS = ["Semua Semester", "Sem 1–2", "Sem 3–4", "Sem 5–6", "Sem 7+"];
+const PRODI_OPTIONS = ["Semua Prodi", "Teknik Informatika", "Manajemen", "Matematika", "Ilmu Hukum", "Teknik Sipil", "Ilmu Komunikasi", "Kedokteran", "Perpajakan"];
 const STATUS_OPTIONS = ["Semua Status", "Normal", "Perhatian", "SP1", "SP2"];
 const JENJANG_OPTIONS = ["Semua Jenjang", "S1", "S2", "S3", "D3", "D4", "Profesi"];
 
@@ -42,7 +42,7 @@ export default function MahasiswaSection({
   onOpenExport,
 }: Props) {
   const [search, setSearch] = useState("");
-  const [semester, setSemester] = useState("Semua Semester");
+  const [prodiFilter, setProdiFilter] = useState("Semua Prodi");
   const [statusFilter, setStatusFilter] = useState("Semua Status");
   const [jenjangFilter, setJenjangFilter] = useState("Semua Jenjang");
   const [year, setYear] = useState("2025/2026");
@@ -51,12 +51,12 @@ export default function MahasiswaSection({
     const q = search.trim().toLowerCase();
     return data.filter((m) => {
       if (q && !m.nm.toLowerCase().includes(q) && !m.npm.includes(q)) return false;
-      if (semester !== "Semua Semester" && semGroup(m.sem) !== semester) return false;
+      if (prodiFilter !== "Semua Prodi" && m.prodi !== prodiFilter) return false;
       if (statusFilter !== "Semua Status" && m.status !== statusFilter) return false;
       if (jenjangFilter !== "Semua Jenjang" && m.jenjang !== jenjangFilter) return false;
       return true;
     });
-  }, [data, search, semester, statusFilter, jenjangFilter]);
+  }, [data, search, prodiFilter, statusFilter, jenjangFilter]);
 
   return (
     <div ref={sectionRef} id="sec-mahasiswa">
@@ -119,12 +119,12 @@ export default function MahasiswaSection({
               ))}
             </select>
             <select
-              value={semester}
-              onChange={(e) => setSemester(e.target.value)}
+              value={prodiFilter}
+              onChange={(e) => setProdiFilter(e.target.value)}
               className={styles.filterSelect}
               style={{ fontFamily: "'Poppins',sans-serif" }}
             >
-              {SEMESTER_OPTIONS.map((o) => (
+              {PRODI_OPTIONS.map((o) => (
                 <option key={o}>{o}</option>
               ))}
             </select>
