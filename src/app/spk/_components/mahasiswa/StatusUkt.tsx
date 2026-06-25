@@ -113,7 +113,7 @@ export default function StatusUkt({ onExport }: Props) {
       </div>
 
       {/* Stat cards */}
-      <div className="grid gap-[18px] mb-5" style={{ gridTemplateColumns: 'repeat(3,1fr)' }}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-[18px] mb-5">
         {STAT_CARDS.map(c => (
           <div key={c.label}
             className={`bg-gradient-to-br ${COLOR_MAP[c.color]} border-none rounded-[18px] p-[22px_20px_20px] flex flex-col min-h-[178px] relative overflow-hidden`}

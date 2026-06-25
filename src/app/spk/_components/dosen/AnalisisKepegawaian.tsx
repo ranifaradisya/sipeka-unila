@@ -93,7 +93,7 @@ export default function AnalisaKepegawaian({ onOpenDosen, onExport }: Props) {
       </div>
 
       {/* Analysis cards */}
-      <div className="grid gap-3 mb-4" style={{ gridTemplateColumns: 'repeat(5,1fr)' }}>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-4">
         {ANALYSIS_CARDS.map(c => (
           <div key={c.label} className={`${styles.acCard} bg-white border border-[#F1F5F9] rounded-[14px] p-4 shadow-[0_1px_3px_rgba(0,0,0,.04),0_4px_16px_rgba(0,0,0,.06)]`}>
             <div className="flex items-center justify-between mb-[10px]">
@@ -113,7 +113,7 @@ export default function AnalisaKepegawaian({ onOpenDosen, onExport }: Props) {
         <div>
           <strong className="text-[12.5px] font-bold text-[#0F172A]">Alert Otomatis Aktif</strong>
           <p className="text-[11.5px] text-[#475569] mt-[3px] leading-[1.6]">
-            Sistem mengirim notifikasi kepada dosen dan pimpinan <b>3 tahun sebelum</b> batas kenaikan pangkat dan <b>6 bulan sebelum</b> batas jabfung.
+            Sistem akan menampilkan notifikasi peringatan <b>3 tahun sebelum</b> batas kenaikan pangkat dan <b>6 bulan sebelum</b> batas jabfung.
           </p>
         </div>
       </div>
